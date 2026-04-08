@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神州数码操作流程教程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(90deg, #0f3460, #533483);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .header h1 {
+            color: #fff;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .contact {
+            background: rgba(255,255,255,0.15);
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .contact-name {
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .contact-phone {
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 18px 15px;
+            background: #e0e0e0;
+            border: none;
+            border-radius: 15px 15px 0 0;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .tab-btn:hover {
+            background: #d0d0d0;
+        }
+        .tab-btn.active {
+            background: #fff;
+            color: #533483;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+        }
+        .tab-content {
+            display: none;
+            background: #fff;
+            padding: 30px;
+            border-radius: 0 15px 15px 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .content-section {
+            margin-bottom: 25px;
+        }
+        .content-section h3 {
+            color: #0f3460;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #533483;
+        }
+        .content-section h4 {
+            color: #533483;
+            font-size: 1.1em;
+            margin: 15px 0 8px 0;
+        }
+        .content-section p {
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .content-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .content-section ul li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        .content-section ul li:before {
+            content: "•";
+            color: #533483;
+            font-weight: bold;
+            position: absolute;
+            left: 5px;
+        }
+        .highlight-box {
+            background: #f8f4ff;
+            border-left: 4px solid #533483;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box strong {
+            color: #0f3460;
+        }
+        .qa-item {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+        }
+        .qa-item q {
+            color: #0f3460;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .qa-item p {
+            padding-left: 15px;
+            border-left: 3px solid #e0e0e0;
+            color: #555;
+        }
+        .steps {
+            counter-reset: step-counter;
+        }
+        .steps li {
+            padding-left: 35px !important;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .steps li:before {
+            content: counter(step-counter) !important;
+            counter-increment: step-counter;
+            background: #533483;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            position: absolute;
+            left: 0 !important;
+            top: 8px;
+        }
+        .info-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 18px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.95em;
+        }
+        .tab-content h2 {
+            color: #0f3460;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .tab-btn {
+                min-width: 100%;
+                padding: 15px 10px;
+                font-size: 0.95em;
+            }
+            .contact {
+                padding: 10px 20px;
+            }
+            .contact-name, .contact-phone {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>神州数码操作流程教程</h1>
+            <div class="contact">
+                <span class="contact-name">周勇</span>
+                <span class="contact-phone">📞 18681621755</span>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">神州数码商桥开户教程</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">神州数码账期额度开通教程</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">神州数码零售通报数教程</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab4')">神州数码商桥下单教程</button>
+        </div>
+        
+        <div id="tab1" class="tab-content active">
+            <h2>一、神州数码商桥开户教程</h2>
+            
+            <div class="content-section">
+                <h3>注册前准备资料</h3>
+                <div class="highlight-box">
+                    <p>首先注册之前需准备资料及样本如下：</p>
+                </div>
+                <ul>
+                    <li><strong>A、公司营业执照</strong>复印件盖章件及盖章后扫描图像</li>
+                    <li><strong>B、公司法人身份证</strong>复印件盖章及盖章后扫描图像</li>
+                    <li><strong>C、公司一般纳税人资格证明</strong>复印件盖章及盖章后扫描图像（或发票扫描件）</li>
+                    <li><strong>D、收货章</strong>盖白纸后扫描图像</li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3>注册步骤</h3>
+                <ul class="steps">
+                    <li>百度搜索<strong>神州商桥网</strong>，或直接粘贴网址：<a href="http://www.e-bridge.com.cn/" target="_blank">http://www.e-bridge.com.cn/</a></li>
+                    <li>在网页顶部点击<strong>免费注册</strong></li>
+                    <li>根据提示创建网站账号（账号建议公司名称首字母，如肥城梦扬科技有限公司，fcmykj，建议4-6位）</li>
+                    <li>点击下一步，填写邮箱后发送激活链接至邮箱</li>
+                    <li>进入邮箱点击链接激活账号，进入商桥</li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3>渠道认证</h3>
+                <ul class="steps">
+                    <li>进入商桥后，在首页搜索<strong>机械革命</strong>的物料号</li>
+                    <li>出现对应商品后，点击商品图片，进入神州数码机械革命旗舰店</li>
+                    <li>点击最上方<strong>渠道认证</strong></li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3>填写公司信息</h3>
+                <p>点击渠道认证后，会弹出公司信息填写页面。包括：</p>
+                <ul>
+                    <li><strong>基本信息</strong></li>
+                    <li><strong>税务信息</strong></li>
+                    <li><strong>送货信息</strong></li>
+                </ul>
+                <div class="info-note">
+                    <strong>重要提示：</strong>信息需保证和《商务信息表》中完全一致。签收标准：含有公司全称带边框的章，例如公章签收，签收标准为：公司全称+代码。提供文件可能会有所更新，以实际所填为准。
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>提交审核</h3>
+                <ul class="steps">
+                    <li>填写完毕，按照要求上传相关证件</li>
+                    <li>对照营业执照及《商务信息表》检查无误后点击提交</li>
+                    <li>出现待审核画面，<strong>联系神码销售</strong>进行审批</li>
+                </ul>
+                <div class="highlight-box">
+                    <strong>客服热线：</strong>在注册过程中遇到任何问题，可以拨打 <strong>4008162008</strong> 神州商桥客服协助解决。
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>常见问题解答</h3>
+                
+                <div class="qa-item">
+                    <q>Q: 我的发票信息、收货地址信息如何查询？</q>
+                    <p>A：登录商桥 → 点击 <strong>我的商桥</strong> → 进入<strong>买家中心</strong> → 在<strong>发票信息管理</strong>、<strong>收货地址管理</strong> 可修改，修改后请自行打印申请表格，盖上相关印章&公章，联系神码相关销售，将申请资料寄回。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <q>Q：我的发票是什么时间开，什么时间能收到？</q>
+                    <p>A：发票自动开具，一般为订单完成后第二天开具，因为法人体为北京神码，由北京财务部EMS邮寄，每周二周四寄发票（周一周二订单发票周四邮寄，周三周四周五订单下周二邮寄）。请注意邮寄发票地址是否正确。</p>
+                </div>
+                
+                <div class="qa-item">
+                    <q>Q:我的货什么时间能收到，怎么查询物流信息？</q>
+                    <p>A：省内时效隔日到货，省外一般3-5天。如急需要货，请提前与销售沟通。</p>
+                    <p style="margin-top:8px;"><strong>物流查询：</strong>登录商桥 → 我的商桥 → 已买到产品 → 找到相关订单，点击查看物流</p>
+                    <p style="margin-top:8px;">拨打物流服务电话查询：<strong>400 628 0056</strong>（需告知客服订单号）</p>
+                    <p style="margin-top:8px;">添加微信，注册，订单物流信息自动发送</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab2" class="tab-content">
+            <h2>二、神州数码账期额度开通教程</h2>
+            
+            <div class="content-section">
+                <h3>开通条件</h3>
+                <div class="highlight-box">
+                    <p><strong>新客户</strong>现款合作满<strong>三个月</strong>，可申请开通账期额度</p>
+                </div>
+            </div>
+            
+            <div class="content-section">
+                <h3>担保方式</h3>
+                <ul>
+                    <li><strong>房产担保：</strong>签订框架协议，房产做担保面签，根据交易额、交易频率给出相应额度、账期</li>
+                    <li><strong>房产抵押后：</strong>根据抵押金额给出相应额度</li>
+                    <li><strong>现金点支持：</strong>针对现款提货客户，给予<strong>1个点现金点支持</strong>（前折0.5%，次月后返0.5%）</li>
+                </ul>
+            </div>
+            
+            <div class="content-section">
+                <h3>所需资料</h3>
+                <ul>
+                    <li>营业执照原件+复印件</li>
+                    <li>法人身份证原件+复印件</li>
+                    <li>房产证原件+复印件</li>
+                    <li>房产所有人身份证原件+复印件</li>
+                    <li>公司近三个月财务报表</li>
+                    <li>框架协议（神码提供）</li>
+                </ul>
+                <div class="info-note">
+                    <strong>注意：</strong>上述材料涉及到的人员需要在场。<br>
+                    神州数码账期额度开通教程需在一定条件下进行，详细流程请咨询神码销售。
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab3" class="tab-content">
+            <h2>三、神州数码零售通报数教程</h2>
+            
+            <div class="content-section">
+                <div class="highlight-box">
+                    <p>本教程内容正在整理中，如需帮助请联系：</p>
+                    <p style="margin-top:10px;text-align:center;"><strong>周勇</strong> 📞 <strong>18681621755</strong></p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tab4" class="tab-content">
+            <h2>四、神州数码商桥下单教程</h2>
+            
+            <div class="content-section">
+                <h3>下单流程</h3>
+                <ul class="steps">
+                    <li><strong>登陆账号</strong></li>
+                    <li><strong>搜索物料号</strong>，找到所需商品</li>
+                    <li>勾选相应物料，点击<strong>结算</strong>（如果还要添加其他物料就先加入购物车）</li>
+                    <li>选择地址、支付方式、发票等</li>
+                </ul>
+                <div class="info-note">
+                    <strong>提示：</strong>下单过程中如遇问题，可联系神码销售或拨打客服电话咨询。
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(function() {
+                document.getElementById(tabName).classList.add("active");
+            }, 10);
+            evt.currentTarget.classList.add("active");
+        }
+        
+        // Hash URL handling
+        var hash = window.location.hash.substring(1);
+        if (hash && document.getElementById(hash)) {
+            var evt = { currentTarget: document.querySelector('.tab-btn[onclick*="' + hash + '"]') };
+            if (evt.currentTarget) {
+                openTab(evt, hash);
+            }
+        }
+    </script>
+</body>
+</html>
