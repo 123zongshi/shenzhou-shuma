@@ -5,23 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>神州数码操作流程教程</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Helvetica, sans-serif;
             background: #f5f6fa;
             color: #2c3e50;
             min-height: 100vh;
         }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        /* Header */
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        
         .header {
             background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
             color: #fff;
@@ -29,25 +21,8 @@
             border-radius: 12px;
             margin-bottom: 25px;
             box-shadow: 0 8px 25px rgba(26, 35, 126, 0.35);
-            position: relative;
-            overflow: hidden;
         }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 50%;
-        }
-        .header h1 {
-            font-size: 2em;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
+        .header h1 { font-size: 2em; font-weight: 600; margin-bottom: 15px; }
         .header .contact-card {
             display: inline-flex;
             align-items: center;
@@ -56,21 +31,9 @@
             border-radius: 8px;
             border: 1px solid rgba(255,255,255,0.2);
         }
-        .header .contact-name {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-right: 15px;
-            padding-right: 15px;
-            border-right: 1px solid rgba(255,255,255,0.3);
-        }
-        .header .contact-phone {
-            font-size: 1.1em;
-            color: #ffd54f;
-        }
-        .header .contact-phone::before {
-            content: '📞 ';
-        }
-        /* Tabs Navigation */
+        .header .contact-name { font-size: 1.2em; font-weight: 600; margin-right: 15px; padding-right: 15px; border-right: 1px solid rgba(255,255,255,0.3); }
+        .header .contact-phone { font-size: 1.1em; color: #ffd54f; }
+        
         .tabs-nav {
             display: flex;
             gap: 8px;
@@ -96,17 +59,9 @@
             text-align: center;
             border-bottom: 3px solid transparent;
         }
-        .tab-btn:hover {
-            background: #e8eaf6;
-            color: #1a237e;
-        }
-        .tab-btn.active {
-            background: #fff;
-            color: #1a237e;
-            font-weight: 600;
-            border-bottom-color: #3949ab;
-        }
-        /* Tab Content */
+        .tab-btn:hover { background: #e8eaf6; color: #1a237e; }
+        .tab-btn.active { background: #fff; color: #1a237e; font-weight: 600; border-bottom-color: #3949ab; }
+        
         .tab-content {
             display: none;
             background: #fff;
@@ -114,10 +69,8 @@
             border-radius: 0 0 12px 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
-        .tab-content.active {
-            display: block;
-        }
-        /* Sub-tabs for steps */
+        .tab-content.active { display: block; }
+        
         .sub-tabs {
             display: flex;
             gap: 6px;
@@ -137,193 +90,44 @@
             color: #5f6368;
             transition: all 0.2s ease;
         }
-        .sub-tab-btn:hover {
-            border-color: #3949ab;
-            color: #3949ab;
-        }
-        .sub-tab-btn.active {
-            background: #3949ab;
-            color: #fff;
-            border-color: #3949ab;
-        }
-        .sub-content {
-            display: none;
-        }
-        .sub-content.active {
-            display: block;
-        }
-        /* Content Styling */
-        .section-title {
-            color: #1a237e;
-            font-size: 1.4em;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #e8eaf6;
-        }
-        .content-block {
-            margin-bottom: 25px;
-        }
-        .content-block h3 {
-            color: #283593;
-            font-size: 1.15em;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        .content-block h3::before {
-            content: '';
-            width: 4px;
-            height: 18px;
-            background: #3949ab;
-            margin-right: 10px;
-            border-radius: 2px;
-        }
-        .content-block ul {
-            list-style: none;
-            padding: 0;
-        }
-        .content-block ul li {
-            padding: 10px 0 10px 28px;
-            position: relative;
-            line-height: 1.7;
-            color: #424242;
-        }
-        .content-block ul li::before {
-            content: '▸';
-            color: #3949ab;
-            position: absolute;
-            left: 8px;
-        }
-        .step-list {
-            counter-reset: step-counter;
-        }
-        .step-list li {
-            padding-left: 38px !important;
-        }
-        .step-list li::before {
-            content: counter(step-counter) !important;
-            counter-increment: step-counter;
-            background: #3949ab;
-            color: #fff;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-            position: absolute !important;
-            left: 0 !important;
-            top: 10px;
-        }
-        /* Highlight Box */
-        .highlight-box {
-            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
-            border-left: 5px solid #3949ab;
-            padding: 18px 22px;
-            margin: 18px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .highlight-box p {
-            margin-bottom: 8px;
-            color: #283593;
-        }
-        .highlight-box p:last-child {
-            margin-bottom: 0;
-        }
-        /* Info Note */
-        .info-note {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 14px 18px;
-            margin: 15px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 0.95em;
-            color: #5d4037;
-        }
-        /* QA Item */
-        .qa-item {
-            background: #fafafa;
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin-bottom: 14px;
-            border: 1px solid #eee;
-        }
-        .qa-item q {
-            color: #1a237e;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .qa-item p {
-            padding-left: 15px;
-            border-left: 3px solid #c5cae9;
-            color: #555;
-            line-height: 1.6;
-        }
-        /* Image Display */
-        .step-image {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            margin: 15px 0;
-            display: block;
-        }
-        .image-container {
-            text-align: center;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            margin: 15px 0;
-        }
-        .image-container img {
-            max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-        }
-        /* Coming Soon */
-        .coming-soon {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
-            border-radius: 12px;
-        }
-        .coming-soon-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-        .coming-soon h3 {
-            color: #3949ab;
-            margin-bottom: 15px;
-        }
-        .coming-soon p {
-            color: #666;
-        }
-        /* Responsive */
+        .sub-tab-btn:hover { border-color: #3949ab; color: #3949ab; }
+        .sub-tab-btn.active { background: #3949ab; color: #fff; border-color: #3949ab; }
+        
+        .sub-content { display: none; }
+        .sub-content.active { display: block; }
+        
+        .section-title { color: #1a237e; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid #e8eaf6; }
+        .content-block { margin-bottom: 25px; }
+        .content-block h3 { color: #283593; font-size: 1.15em; margin-bottom: 12px; display: flex; align-items: center; }
+        .content-block h3::before { content: ''; width: 4px; height: 18px; background: #3949ab; margin-right: 10px; border-radius: 2px; }
+        .content-block ul { list-style: none; padding: 0; }
+        .content-block ul li { padding: 10px 0 10px 28px; position: relative; line-height: 1.7; color: #424242; }
+        .content-block ul li::before { content: '▸'; color: #3949ab; position: absolute; left: 8px; }
+        
+        .step-list { counter-reset: step-counter; }
+        .step-list li { padding-left: 38px !important; }
+        .step-list li::before { content: counter(step-counter) !important; counter-increment: step-counter; background: #3949ab; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8em; position: absolute !important; left: 0 !important; top: 10px; }
+        
+        .highlight-box { background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border-left: 5px solid #3949ab; padding: 18px 22px; margin: 18px 0; border-radius: 0 8px 8px 0; }
+        .highlight-box p { margin-bottom: 8px; color: #283593; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        
+        .info-note { background: #fff8e1; border-left: 4px solid #ffc107; padding: 14px 18px; margin: 15px 0; border-radius: 0 6px 6px 0; font-size: 0.95em; color: #5d4037; }
+        
+        .qa-item { background: #fafafa; border-radius: 8px; padding: 16px 20px; margin-bottom: 14px; border: 1px solid #eee; }
+        .qa-item q { color: #1a237e; font-weight: 600; display: block; margin-bottom: 10px; }
+        .qa-item p { padding-left: 15px; border-left: 3px solid #c5cae9; color: #555; line-height: 1.6; }
+        
+        .step-image { max-width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.12); margin: 15px 0; display: block; }
+        .image-container { text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px; margin: 15px 0; }
+        .image-container img { max-width: 100%; border-radius: 8px; box-shadow: 0 3px 12px rgba(0,0,0,0.1); }
+        
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.4em;
-            }
-            .tab-btn {
-                min-width: 100%;
-                font-size: 0.9em;
-                padding: 14px 10px;
-            }
-            .header .contact-card {
-                display: block;
-                text-align: center;
-            }
-            .header .contact-name {
-                border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.3);
-                padding-right: 0;
-                padding-bottom: 8px;
-                margin-right: 0;
-                margin-bottom: 8px;
-            }
-            .tab-content {
-                padding: 20px 15px;
-            }
+            .header h1 { font-size: 1.4em; }
+            .tab-btn { min-width: 100%; font-size: 0.9em; padding: 14px 10px; }
+            .header .contact-card { display: block; text-align: center; }
+            .header .contact-name { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.3); padding-right: 0; padding-bottom: 8px; margin-right: 0; margin-bottom: 8px; }
+            .tab-content { padding: 20px 15px; }
         }
     </style>
 </head>
@@ -348,59 +152,150 @@
         <div id="tab1" class="tab-content active">
             <h2 class="section-title">一、神州数码商桥开户教程</h2>
             
-            <div class="content-block">
-                <h3>注册前准备资料</h3>
-                <div class="highlight-box">
-                    <p>首先注册之前需准备资料及样本如下：</p>
+            <div class="sub-tabs">
+                <button class="sub-tab-btn active" onclick="openSubTab(event, 's1_1')">步骤1</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_2')">步骤2</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_3')">步骤3</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_4')">步骤4</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_5')">步骤5</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_6')">步骤6</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_7')">步骤7</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_8')">步骤8</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's1_9')">步骤9</button>
+            </div>
+            
+            <div id="s1_1" class="sub-content active">
+                <h3 class="section-title">步骤1：搜索神州商桥官网</h3>
+                <div class="image-container">
+                    <img src="images/account_step_1.png" alt="搜索神州商桥" class="step-image">
                 </div>
-                <ul>
-                    <li><strong>A、公司营业执照</strong>复印件盖章件及盖章后扫描图像</li>
-                    <li><strong>B、公司法人身份证</strong>复印件盖章及盖章后扫描图像</li>
-                    <li><strong>C、公司一般纳税人资格证明</strong>复印件盖章及盖章后扫描图像（或发票扫描件）</li>
-                    <li><strong>D、收货章</strong>盖白纸后扫描图像</li>
-                </ul>
-            </div>
-            
-            <div class="content-block">
-                <h3>注册步骤</h3>
-                <ul class="step-list">
-                    <li>百度搜索<strong>神州商桥网</strong>，或直接粘贴网址：<a href="http://www.e-bridge.com.cn/" target="_blank">http://www.e-bridge.com.cn/</a></li>
-                    <li>在网页顶部点击<strong>免费注册</strong></li>
-                    <li>根据提示创建网站账号（账号建议公司名称首字母，如肥城梦扬科技有限公司，fcmykj，建议4-6位）</li>
-                    <li>点击下一步，填写邮箱后发送激活链接至邮箱</li>
-                    <li>进入邮箱点击链接激活账号，进入商桥</li>
-                </ul>
-            </div>
-            
-            <div class="content-block">
-                <h3>渠道认证</h3>
-                <ul class="step-list">
-                    <li>进入商桥后，在首页搜索<strong>机械革命</strong>的物料号</li>
-                    <li>出现对应商品后，点击商品图片，进入神州数码机械革命旗舰店</li>
-                    <li>点击最上方<strong>渠道认证</strong></li>
-                </ul>
-            </div>
-            
-            <div class="content-block">
-                <h3>填写公司信息</h3>
-                <p>点击渠道认证后，会弹出公司信息填写页面。包括：</p>
-                <ul>
-                    <li><strong>基本信息</strong></li>
-                    <li><strong>税务信息</strong></li>
-                    <li><strong>送货信息</strong></li>
-                </ul>
-                <div class="info-note">
-                    <strong>重要提示：</strong>信息需保证和《商务信息表》中完全一致。签收标准：含有公司全称带边框的章，例如公章签收，签收标准为：公司全称+代码。提供文件可能会有所更新，以实际所填为准。
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>百度搜索<strong>神州商桥网</strong></li>
+                        <li>或直接粘贴网址：<a href="http://www.e-bridge.com.cn/" target="_blank">http://www.e-bridge.com.cn/</a></li>
+                        <li>在搜索结果中点击<strong>官方网站</strong>链接</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="content-block">
-                <h3>提交审核</h3>
-                <ul class="step-list">
-                    <li>填写完毕，按照要求上传相关证件</li>
-                    <li>对照营业执照及《商务信息表》检查无误后点击提交</li>
-                    <li>出现待审核画面，<strong>联系神码销售</strong>进行审批</li>
-                </ul>
+            <div id="s1_2" class="sub-content">
+                <h3 class="section-title">步骤2：进入商桥首页</h3>
+                <div class="image-container">
+                    <img src="images/account_step_2.png" alt="进入商桥首页" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>进入神州商桥官网首页</li>
+                        <li>了解平台功能和服务</li>
+                        <li>熟悉界面导航和布局</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_3" class="sub-content">
+                <h3 class="section-title">步骤3：注册账号</h3>
+                <div class="image-container">
+                    <img src="images/account_step_3.png" alt="注册账号" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在网页顶部点击<strong>免费注册</strong></li>
+                        <li>填写<strong>电子邮箱</strong>（建议使用公司邮箱）</li>
+                        <li>设置<strong>登录名</strong>（建议使用公司简称，如fcmykj，4-6位）</li>
+                        <li>填写<strong>验证码</strong>并同意服务条款</li>
+                        <li>点击<strong>下一步</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_4" class="sub-content">
+                <h3 class="section-title">步骤4：搜索机械革命物料</h3>
+                <div class="image-container">
+                    <img src="images/account_step_4.png" alt="搜索物料" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>进入商桥后，在首页<strong>搜索框</strong>输入机械革命的物料号</li>
+                        <li>或通过<strong>全部产品分类</strong>找到对应商品</li>
+                        <li>出现对应商品后，点击商品进入详情页</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_5" class="sub-content">
+                <h3 class="section-title">步骤5：进入旗舰店并点击渠道认证</h3>
+                <div class="image-container">
+                    <img src="images/account_step_5.png" alt="渠道认证" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>点击商品图片，进入<strong>神州数码机械革命旗舰店</strong></li>
+                        <li>点击最上方<strong>渠道认证</strong>按钮</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_6" class="sub-content">
+                <h3 class="section-title">步骤6：填写公司基本信息</h3>
+                <div class="image-container">
+                    <img src="images/account_step_6.png" alt="填写公司信息" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>填写<strong>公司名称</strong>、所在地、注册地址</li>
+                        <li>上传<strong>法人身份证</strong>正反面复印件（加盖公章）</li>
+                        <li>上传<strong>营业执照</strong>副本复印件（加盖公章）</li>
+                        <li>信息需与《商务信息表》完全一致</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_7" class="sub-content">
+                <h3 class="section-title">步骤7：填写税务信息</h3>
+                <div class="image-container">
+                    <img src="images/account_step_7.png" alt="填写税务信息" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>勾选<strong>增值税专用发票</strong></li>
+                        <li>填写<strong>纳税人识别号</strong>（统一社会信用代码）</li>
+                        <li>填写<strong>开户行</strong>及银行账号</li>
+                        <li>上传<strong>一般纳税人资格证明</strong>（加盖公章）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s1_8" class="sub-content">
+                <h3 class="section-title">步骤8：填写收货地址信息</h3>
+                <div class="image-container">
+                    <img src="images/account_step_8.png" alt="收货地址" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>填写<strong>收货地址</strong>（省市区详细地址）</li>
+                        <li>填写<strong>邮编</strong></li>
+                        <li>填写<strong>联系人</strong>及电话</li>
+                        <li>上传<strong>收货印章</strong>（有边框且包含公司全称）</li>
+                    </ul>
+                    <div class="info-note">
+                        <strong>签收标准：</strong>含有公司全称带边框的章，例如公章签收，签收标准为：公司全称+代码。
+                    </div>
+                </div>
+            </div>
+            
+            <div id="s1_9" class="sub-content">
+                <h3 class="section-title">步骤9：提交审核</h3>
+                <div class="image-container">
+                    <img src="images/account_step_9.png" alt="提交审核" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>检查所有填写信息无误后点击<strong>提交</strong></li>
+                        <li>出现<strong>待审核</strong>画面</li>
+                        <li>联系<strong>神码销售</strong>进行审批</li>
+                        <li>根据提示<strong>邮寄相关材料</strong>原件</li>
+                    </ul>
+                </div>
                 <div class="highlight-box">
                     <p><strong>客服热线：</strong>在注册过程中遇到任何问题，可以拨打 <strong>4008162008</strong> 神州商桥客服协助解决。</p>
                 </div>
@@ -408,23 +303,17 @@
             
             <div class="content-block">
                 <h3>常见问题解答</h3>
-                
                 <div class="qa-item">
                     <q>Q: 我的发票信息、收货地址信息如何查询？</q>
-                    <p>A：登录商桥 → 点击<strong>我的商桥</strong> → 进入<strong>买家中心</strong> → 在<strong>发票信息管理</strong>、<strong>收货地址管理</strong>可修改，修改后请自行打印申请表格，盖上相关印章&公章，联系神码相关销售，将申请资料寄回。</p>
+                    <p>A：登录商桥 → 点击<strong>我的商桥</strong> → 进入<strong>买家中心</strong> → 在<strong>发票信息管理</strong>、<strong>收货地址管理</strong>可修改</p>
                 </div>
-                
                 <div class="qa-item">
                     <q>Q：我的发票是什么时间开，什么时间能收到？</q>
-                    <p>A：发票自动开具，一般为订单完成后第二天开具，因为法人体为北京神码，由北京财务部EMS邮寄，每周二周四寄发票（周一周二订单发票周四邮寄，周三周四周五订单下周二邮寄）。请注意邮寄发票地址是否正确。</p>
+                    <p>A：发票自动开具，一般为订单完成后第二天开具，由北京财务部EMS邮寄，每周二周四寄发票</p>
                 </div>
-                
                 <div class="qa-item">
-                    <q>Q: 我的货什么时间能收到，怎么查询物流信息？</q>
-                    <p>A：省内时效隔日到货，省外一般3-5天。如急需要货，请提前与销售沟通。</p>
-                    <p style="margin-top:8px;"><strong>物流查询：</strong>登录商桥 → 我的商桥 → 已买到产品 → 找到相关订单，点击查看物流</p>
-                    <p style="margin-top:8px;">拨打物流服务电话查询：<strong>400 628 0056</strong>（需告知客服订单号）</p>
-                    <p style="margin-top:8px;">添加微信，注册，订单物流信息自动发送</p>
+                    <q>Q:我的货什么时间能收到，怎么查询物流信息？</q>
+                    <p>A：省内时效隔日到货，省外一般3-5天。物流查询：登录商桥 → 我的商桥 → 已买到产品 → 查看物流。<br>电话查询：<strong>400 628 0056</strong></p>
                 </div>
             </div>
         </div>
@@ -451,7 +340,7 @@
             
             <div class="content-block">
                 <h3>所需资料</h3>
-                <ul>
+                <ul class="step-list">
                     <li>营业执照原件+复印件</li>
                     <li>法人身份证原件+复印件</li>
                     <li>房产证原件+复印件</li>
@@ -460,14 +349,15 @@
                     <li>框架协议（神码提供）</li>
                 </ul>
                 <div class="info-note">
-                    <strong>注意：</strong>上述材料涉及到的人员需要在场。<br>
-                    详细流程请咨询神码销售。
+                    <strong>注意：</strong>上述材料涉及到的人员需要在场。
                 </div>
             </div>
             
             <div class="content-block">
                 <h3>电子签约指南</h3>
-                <p>如需线上电子签约，请准备以下材料：</p>
+                <div class="image-container">
+                    <img src="images/order_step_2.jpg" alt="电子签约指南" class="step-image">
+                </div>
                 <ul class="step-list">
                     <li><strong>法人信息：</strong>身份证照片及实名手机号</li>
                     <li><strong>房产证明：</strong>房产证照片、房产所有人身份证照片及实名手机号</li>
@@ -485,81 +375,96 @@
             <h2 class="section-title">三、神州数码零售通报数教程</h2>
             
             <div class="sub-tabs">
-                <button class="sub-tab-btn active" onclick="openSubTab(event, 'sub3_1')">步骤1</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_2')">步骤2</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_3')">步骤3</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_4')">步骤4</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_5')">步骤5</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_6')">步骤6</button>
+                <button class="sub-tab-btn active" onclick="openSubTab(event, 's3_1')">步骤1</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's3_2')">步骤2</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's3_3')">步骤3</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's3_4')">步骤4</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's3_5')">步骤5</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's3_6')">步骤6</button>
             </div>
             
-            <div id="sub3_1" class="sub-content active">
+            <div id="s3_1" class="sub-content active">
                 <h3 class="section-title">步骤1：设置品牌并选择报量</h3>
                 <div class="image-container">
-                    <img src="images/order_step_3.jpg" alt="零售通小程序报量步骤" class="step-image">
+                    <img src="images/retail_step_1.jpg" alt="步骤1：设置品牌" class="step-image">
                 </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>在小程序首页，点击左上角的<strong>品牌切换</strong>按钮，选择"<strong>机械革命</strong>"</li>
-                        <li>点击首页上的"<strong>提报销量</strong>"图标（紫色圆圈内的向上箭头）</li>
+                        <li>在小程序首页，点击左上角的<strong>品牌切换</strong>按钮</li>
+                        <li>选择"<strong>机械革命</strong>"</li>
+                        <li>点击首页上的"<strong>提报销量</strong>"图标</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub3_2" class="sub-content">
+            <div id="s3_2" class="sub-content">
                 <h3 class="section-title">步骤2：选择机型</h3>
+                <div class="image-container">
+                    <img src="images/retail_step_2.jpg" alt="步骤2：选择机型" class="step-image">
+                </div>
                 <div class="content-block">
                     <ul class="step-list">
                         <li>在产品列表中搜索或直接找到目标机型</li>
-                        <li>图中示例为"<strong>25431-旷世X</strong>"</li>
-                        <li>提供了搜索栏，可输入手机/品牌/号卡/平板等关键字</li>
-                        <li>选中的机型下方标有相应的奖励金额（如红色标签显示 ￥50）</li>
+                        <li>示例：<strong>25431-旷世X</strong></li>
+                        <li>搜索栏可输入手机/品牌/号卡/平板等关键字</li>
+                        <li>选中的机型下方标有奖励金额（如￥50）</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub3_3" class="sub-content">
+            <div id="s3_3" class="sub-content">
                 <h3 class="section-title">步骤3：填写序列号(SN)</h3>
+                <div class="image-container">
+                    <img src="images/retail_step_3.jpg" alt="步骤3：填写SN" class="step-image">
+                </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>在提报界面填写或扫描机器的 <strong>IMEI1码</strong>（即机器序列号）</li>
+                        <li>在提报界面填写<strong>IMEI1码</strong>（机器序列号）</li>
                         <li>可以手动输入 IMEI1 码（必填）</li>
-                        <li>也可以点击旁边的"<strong>扫描</strong>"按钮直接扫描条形码</li>
+                        <li>也可以点击"<strong>扫描</strong>"按钮直接扫描条形码</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub3_4" class="sub-content">
+            <div id="s3_4" class="sub-content">
                 <h3 class="section-title">步骤4：上传证明照片</h3>
+                <div class="image-container">
+                    <img src="images/retail_step_4.jpg" alt="步骤4：上传照片" class="step-image">
+                </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>上传"<strong>机器序列号照片</strong>"和"<strong>发票/销售单照片</strong>"</li>
+                        <li>上传"<strong>机器序列号照片</strong>"</li>
+                        <li>上传"<strong>发票/销售单照片</strong></li>
                         <li>需按照模板拍摄，保持照片清晰、元素齐全</li>
-                        <li>否则可能导致审核不通过而无法领取奖励</li>
+                        <li>否则可能导致审核不通过</li>
                     </ul>
-                    <div class="info-note">
-                        <strong>拍照要求：</strong>上方区域示例为笔记本外箱上的配置贴纸（含SN信息），下方区域示例为正规的发票。
-                    </div>
                 </div>
             </div>
             
-            <div id="sub3_5" class="sub-content">
+            <div id="s3_5" class="sub-content">
                 <h3 class="section-title">步骤5：查看报量状态</h3>
+                <div class="image-container">
+                    <img src="images/retail_step_5.jpg" alt="步骤5：查看状态" class="step-image">
+                </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>提报记录和审核进度可以在首页的"<strong>报量列表</strong>"中查看</li>
-                        <li>点击首页对应的"<strong>报量列表</strong>"图标（橙色文档堆叠形状）</li>
+                        <li>提报记录和审核进度可在首页"<strong>报量列表</strong>"中查看</li>
+                        <li>点击"<strong>报量列表</strong>"图标查看</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub3_6" class="sub-content">
+            <div id="s3_6" class="sub-content">
                 <h3 class="section-title">步骤6：奖励提现</h3>
+                <div class="image-container">
+                    <img src="images/retail_step_6.jpg" alt="步骤6：提现" class="step-image">
+                </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>报量审核通过后的奖励会存入"<strong>我的钱包</strong>"</li>
-                        <li>进入"<strong>我的钱包</strong>"页面，可以看到历史钱包中的余额</li>
-                        <li>支持直接<strong>提现</strong>操作</li>
+                        <li>报量审核通过后，奖励存入"<strong>我的钱包</strong>"</li>
+                        <li>进入"<strong>我的钱包</strong>"页面</li>
+                        <li>查看历史钱包余额</li>
+                        <li>点击"<strong>去提现</strong>"完成提现</li>
                     </ul>
                 </div>
             </div>
@@ -570,20 +475,36 @@
             <h2 class="section-title">四、神州数码商桥下单教程</h2>
             
             <div class="sub-tabs">
-                <button class="sub-tab-btn active" onclick="openSubTab(event, 'sub4_1')">搜索物料</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_2')">进货单</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_3')">填写订单</button>
-                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_4')">支付方式</button>
+                <button class="sub-tab-btn active" onclick="openSubTab(event, 's4_1')">登录账号</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's4_2')">搜索物料</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's4_3')">进货单</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's4_4')">填写订单</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 's4_5')">支付方式</button>
             </div>
             
-            <div id="sub4_1" class="sub-content active">
-                <h3 class="section-title">步骤1：搜索物料号</h3>
+            <div id="s4_1" class="sub-content active">
+                <h3 class="section-title">步骤1：登录账号</h3>
                 <div class="image-container">
-                    <img src="images/order_step_4.jpg" alt="搜索物料号" class="step-image">
+                    <img src="images/account_step_13.png" alt="登录账号" class="step-image">
                 </div>
                 <div class="content-block">
                     <ul class="step-list">
-                        <li>在商桥小程序首页点击<strong>搜索框</strong></li>
+                        <li>打开<strong>神州商桥</strong>小程序或网站</li>
+                        <li>选择<strong>账号密码登录</strong>或<strong>短信验证码登录</strong></li>
+                        <li>输入<strong>用户名</strong>和<strong>密码</strong></li>
+                        <li>点击<strong>登录</strong>按钮</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="s4_2" class="sub-content">
+                <h3 class="section-title">步骤2：搜索物料号</h3>
+                <div class="image-container">
+                    <img src="images/order_step_4.jpg" alt="搜索物料" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在商桥首页点击<strong>搜索框</strong></li>
                         <li>输入<strong>产品名称/物料号</strong></li>
                         <li>可查看<strong>历史搜索</strong>记录</li>
                         <li>点击"<strong>搜索</strong>"按钮进行搜索</li>
@@ -591,8 +512,8 @@
                 </div>
             </div>
             
-            <div id="sub4_2" class="sub-content">
-                <h3 class="section-title">步骤2：加入进货单（购物车）</h3>
+            <div id="s4_3" class="sub-content">
+                <h3 class="section-title">步骤3：加入进货单</h3>
                 <div class="image-container">
                     <img src="images/order_step_5.jpg" alt="进货单" class="step-image">
                 </div>
@@ -600,15 +521,15 @@
                     <ul class="step-list">
                         <li>找到目标商品后，点击商品进入详情页</li>
                         <li>选择商品规格和数量</li>
-                        <li>点击"<strong>加入进货单</strong>"或"<strong>加入购物车</strong>"</li>
+                        <li>点击"<strong>加入进货单</strong>"</li>
                         <li>进入"<strong>进货单</strong>"页面核对商品</li>
-                        <li>勾选要结算的商品，点击"<strong>结算</strong>"按钮</li>
+                        <li>勾选要结算的商品，点击"<strong>结算</strong>"</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub4_3" class="sub-content">
-                <h3 class="section-title">步骤3：填写订单信息</h3>
+            <div id="s4_4" class="sub-content">
+                <h3 class="section-title">步骤4：填写订单信息</h3>
                 <div class="image-container">
                     <img src="images/order_step_6.jpg" alt="填写订单" class="step-image">
                 </div>
@@ -618,16 +539,14 @@
                         <li>选择/确认<strong>收货地址</strong></li>
                         <li>填写<strong>备注信息</strong>（如有特殊要求）</li>
                         <li>选择<strong>支付方式</strong></li>
-                        <li>确认<strong>发票信息</strong>（电子增值税专用发票/普通发票）</li>
-                        <li>填写<strong>短信通知</strong>手机号</li>
-                        <li>选择<strong>收货时间</strong></li>
+                        <li>确认<strong>发票信息</strong></li>
                         <li>点击"<strong>提交订单</strong>"</li>
                     </ul>
                 </div>
             </div>
             
-            <div id="sub4_4" class="sub-content">
-                <h3 class="section-title">步骤4：选择支付方式</h3>
+            <div id="s4_5" class="sub-content">
+                <h3 class="section-title">步骤5：选择支付方式</h3>
                 <div class="image-container">
                     <img src="images/order_step_7.jpg" alt="选择支付方式" class="step-image">
                 </div>
@@ -662,12 +581,9 @@
             }
             var targetTab = document.getElementById(tabName);
             targetTab.style.display = "block";
-            setTimeout(function() {
-                targetTab.classList.add("active");
-            }, 10);
+            setTimeout(function() { targetTab.classList.add("active"); }, 10);
             evt.currentTarget.classList.add("active");
             
-            // Reset sub-tabs when switching main tabs
             var subContents = targetTab.getElementsByClassName("sub-content");
             for (i = 0; i < subContents.length; i++) {
                 subContents[i].style.display = "none";
@@ -682,9 +598,7 @@
                 var firstSub = targetTab.querySelector('.sub-content');
                 if (firstSub) {
                     firstSub.style.display = "block";
-                    setTimeout(function() {
-                        firstSub.classList.add("active");
-                    }, 10);
+                    setTimeout(function() { firstSub.classList.add("active"); }, 10);
                 }
             }
         }
@@ -704,19 +618,8 @@
             }
             var target = document.getElementById(subName);
             target.style.display = "block";
-            setTimeout(function() {
-                target.classList.add("active");
-            }, 10);
+            setTimeout(function() { target.classList.add("active"); }, 10);
             evt.currentTarget.classList.add("active");
-        }
-        
-        // Hash URL handling
-        var hash = window.location.hash.substring(1);
-        if (hash && document.getElementById(hash)) {
-            var evt = { currentTarget: document.querySelector('.tab-btn[onclick*="' + hash + '"]') };
-            if (evt.currentTarget) {
-                openTab(evt, hash);
-            }
         }
     </script>
 </body>
