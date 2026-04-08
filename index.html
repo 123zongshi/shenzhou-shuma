@@ -11,159 +11,199 @@
             box-sizing: border-box;
         }
         body {
-            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Helvetica, sans-serif;
+            background: #f5f6fa;
+            color: #2c3e50;
             min-height: 100vh;
-            color: #333;
         }
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
+        /* Header */
         .header {
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(90deg, #0f3460, #533483);
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: #fff;
+            padding: 35px 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(26, 35, 126, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
         }
         .header h1 {
-            color: #fff;
-            font-size: 2.2em;
+            font-size: 2em;
+            font-weight: 600;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
         }
-        .contact {
+        .header .contact-card {
+            display: inline-flex;
+            align-items: center;
             background: rgba(255,255,255,0.15);
-            padding: 15px 30px;
-            border-radius: 25px;
-            display: inline-block;
-            margin-top: 10px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        .contact-name {
-            color: #fff;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-right: 15px;
-        }
-        .contact-phone {
-            color: #ffd700;
+        .header .contact-name {
             font-size: 1.2em;
+            font-weight: 600;
+            margin-right: 15px;
+            padding-right: 15px;
+            border-right: 1px solid rgba(255,255,255,0.3);
         }
-        .tabs {
+        .header .contact-phone {
+            font-size: 1.1em;
+            color: #ffd54f;
+        }
+        .header .contact-phone::before {
+            content: '📞 ';
+        }
+        /* Tabs Navigation */
+        .tabs-nav {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 0;
             flex-wrap: wrap;
+            background: #fff;
+            padding: 8px 8px 0;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         .tab-btn {
             flex: 1;
-            min-width: 200px;
-            padding: 18px 15px;
-            background: #e0e0e0;
+            min-width: 180px;
+            padding: 16px 12px;
+            background: #f8f9fa;
             border: none;
-            border-radius: 15px 15px 0 0;
+            border-radius: 8px 8px 0 0;
             cursor: pointer;
-            font-size: 1.05em;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #5f6368;
+            transition: all 0.25s ease;
             text-align: center;
+            border-bottom: 3px solid transparent;
         }
         .tab-btn:hover {
-            background: #d0d0d0;
+            background: #e8eaf6;
+            color: #1a237e;
         }
         .tab-btn.active {
             background: #fff;
-            color: #533483;
-            box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+            color: #1a237e;
+            font-weight: 600;
+            border-bottom-color: #3949ab;
         }
+        /* Tab Content */
         .tab-content {
             display: none;
             background: #fff;
             padding: 30px;
-            border-radius: 0 15px 15px 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         .tab-content.active {
             display: block;
         }
-        .content-section {
+        /* Sub-tabs for steps */
+        .sub-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .sub-tab-btn {
+            padding: 10px 18px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #5f6368;
+            transition: all 0.2s ease;
+        }
+        .sub-tab-btn:hover {
+            border-color: #3949ab;
+            color: #3949ab;
+        }
+        .sub-tab-btn.active {
+            background: #3949ab;
+            color: #fff;
+            border-color: #3949ab;
+        }
+        .sub-content {
+            display: none;
+        }
+        .sub-content.active {
+            display: block;
+        }
+        /* Content Styling */
+        .section-title {
+            color: #1a237e;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e8eaf6;
+        }
+        .content-block {
             margin-bottom: 25px;
         }
-        .content-section h3 {
-            color: #0f3460;
-            font-size: 1.3em;
+        .content-block h3 {
+            color: #283593;
+            font-size: 1.15em;
             margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #533483;
+            display: flex;
+            align-items: center;
         }
-        .content-section h4 {
-            color: #533483;
-            font-size: 1.1em;
-            margin: 15px 0 8px 0;
+        .content-block h3::before {
+            content: '';
+            width: 4px;
+            height: 18px;
+            background: #3949ab;
+            margin-right: 10px;
+            border-radius: 2px;
         }
-        .content-section p {
-            line-height: 1.8;
-            margin-bottom: 10px;
-            color: #444;
-        }
-        .content-section ul {
+        .content-block ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
-        .content-section ul li {
-            padding: 8px 0 8px 25px;
+        .content-block ul li {
+            padding: 10px 0 10px 28px;
             position: relative;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #424242;
         }
-        .content-section ul li:before {
-            content: "•";
-            color: #533483;
-            font-weight: bold;
+        .content-block ul li::before {
+            content: '▸';
+            color: #3949ab;
             position: absolute;
-            left: 5px;
+            left: 8px;
         }
-        .highlight-box {
-            background: #f8f4ff;
-            border-left: 4px solid #533483;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
-        }
-        .highlight-box strong {
-            color: #0f3460;
-        }
-        .qa-item {
-            background: #f9f9f9;
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-        }
-        .qa-item q {
-            color: #0f3460;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-        }
-        .qa-item p {
-            padding-left: 15px;
-            border-left: 3px solid #e0e0e0;
-            color: #555;
-        }
-        .steps {
+        .step-list {
             counter-reset: step-counter;
         }
-        .steps li {
-            padding-left: 35px !important;
-            position: relative;
-            margin-bottom: 12px;
+        .step-list li {
+            padding-left: 38px !important;
         }
-        .steps li:before {
+        .step-list li::before {
             content: counter(step-counter) !important;
             counter-increment: step-counter;
-            background: #533483;
+            background: #3949ab;
             color: #fff;
             width: 22px;
             height: 22px;
@@ -171,42 +211,118 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85em;
-            position: absolute;
+            font-size: 0.8em;
+            position: absolute !important;
             left: 0 !important;
-            top: 8px;
+            top: 10px;
         }
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+            border-left: 5px solid #3949ab;
+            padding: 18px 22px;
+            margin: 18px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box p {
+            margin-bottom: 8px;
+            color: #283593;
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+        /* Info Note */
         .info-note {
-            background: #fff3cd;
+            background: #fff8e1;
             border-left: 4px solid #ffc107;
-            padding: 12px 18px;
-            margin: 12px 0;
+            padding: 14px 18px;
+            margin: 15px 0;
             border-radius: 0 6px 6px 0;
             font-size: 0.95em;
+            color: #5d4037;
         }
-        .tab-content h2 {
-            color: #0f3460;
-            font-size: 1.6em;
-            margin-bottom: 20px;
+        /* QA Item */
+        .qa-item {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 14px;
+            border: 1px solid #eee;
+        }
+        .qa-item q {
+            color: #1a237e;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .qa-item p {
+            padding-left: 15px;
+            border-left: 3px solid #c5cae9;
+            color: #555;
+            line-height: 1.6;
+        }
+        /* Image Display */
+        .step-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            margin: 15px 0;
+            display: block;
+        }
+        .image-container {
             text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 15px 0;
         }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+        /* Coming Soon */
+        .coming-soon {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
+            border-radius: 12px;
+        }
+        .coming-soon-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .coming-soon h3 {
+            color: #3949ab;
+            margin-bottom: 15px;
+        }
+        .coming-soon p {
+            color: #666;
+        }
+        /* Responsive */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
             }
             .tab-btn {
                 min-width: 100%;
-                padding: 15px 10px;
-                font-size: 0.95em;
+                font-size: 0.9em;
+                padding: 14px 10px;
             }
-            .contact {
-                padding: 10px 20px;
-            }
-            .contact-name, .contact-phone {
+            .header .contact-card {
                 display: block;
                 text-align: center;
+            }
+            .header .contact-name {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.3);
+                padding-right: 0;
+                padding-bottom: 8px;
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+            .tab-content {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -214,24 +330,25 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>神州数码操作流程教程</h1>
-            <div class="contact">
+            <h1>🏢 神州数码操作流程教程</h1>
+            <div class="contact-card">
                 <span class="contact-name">周勇</span>
-                <span class="contact-phone">📞 18681621755</span>
+                <span class="contact-phone">18681621755</span>
             </div>
         </div>
         
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'tab1')">神州数码商桥开户教程</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab2')">神州数码账期额度开通教程</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab3')">神州数码零售通报数教程</button>
-            <button class="tab-btn" onclick="openTab(event, 'tab4')">神州数码商桥下单教程</button>
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="openTab(event, 'tab1')">商桥开户教程</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab2')">账期额度开通</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab3')">零售通报数</button>
+            <button class="tab-btn" onclick="openTab(event, 'tab4')">商桥下单流程</button>
         </div>
         
+        <!-- Tab 1: 商桥开户教程 -->
         <div id="tab1" class="tab-content active">
-            <h2>一、神州数码商桥开户教程</h2>
+            <h2 class="section-title">一、神州数码商桥开户教程</h2>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>注册前准备资料</h3>
                 <div class="highlight-box">
                     <p>首先注册之前需准备资料及样本如下：</p>
@@ -244,9 +361,9 @@
                 </ul>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>注册步骤</h3>
-                <ul class="steps">
+                <ul class="step-list">
                     <li>百度搜索<strong>神州商桥网</strong>，或直接粘贴网址：<a href="http://www.e-bridge.com.cn/" target="_blank">http://www.e-bridge.com.cn/</a></li>
                     <li>在网页顶部点击<strong>免费注册</strong></li>
                     <li>根据提示创建网站账号（账号建议公司名称首字母，如肥城梦扬科技有限公司，fcmykj，建议4-6位）</li>
@@ -255,16 +372,16 @@
                 </ul>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>渠道认证</h3>
-                <ul class="steps">
+                <ul class="step-list">
                     <li>进入商桥后，在首页搜索<strong>机械革命</strong>的物料号</li>
                     <li>出现对应商品后，点击商品图片，进入神州数码机械革命旗舰店</li>
                     <li>点击最上方<strong>渠道认证</strong></li>
                 </ul>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>填写公司信息</h3>
                 <p>点击渠道认证后，会弹出公司信息填写页面。包括：</p>
                 <ul>
@@ -277,24 +394,24 @@
                 </div>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>提交审核</h3>
-                <ul class="steps">
+                <ul class="step-list">
                     <li>填写完毕，按照要求上传相关证件</li>
                     <li>对照营业执照及《商务信息表》检查无误后点击提交</li>
                     <li>出现待审核画面，<strong>联系神码销售</strong>进行审批</li>
                 </ul>
                 <div class="highlight-box">
-                    <strong>客服热线：</strong>在注册过程中遇到任何问题，可以拨打 <strong>4008162008</strong> 神州商桥客服协助解决。
+                    <p><strong>客服热线：</strong>在注册过程中遇到任何问题，可以拨打 <strong>4008162008</strong> 神州商桥客服协助解决。</p>
                 </div>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>常见问题解答</h3>
                 
                 <div class="qa-item">
                     <q>Q: 我的发票信息、收货地址信息如何查询？</q>
-                    <p>A：登录商桥 → 点击 <strong>我的商桥</strong> → 进入<strong>买家中心</strong> → 在<strong>发票信息管理</strong>、<strong>收货地址管理</strong> 可修改，修改后请自行打印申请表格，盖上相关印章&公章，联系神码相关销售，将申请资料寄回。</p>
+                    <p>A：登录商桥 → 点击<strong>我的商桥</strong> → 进入<strong>买家中心</strong> → 在<strong>发票信息管理</strong>、<strong>收货地址管理</strong>可修改，修改后请自行打印申请表格，盖上相关印章&公章，联系神码相关销售，将申请资料寄回。</p>
                 </div>
                 
                 <div class="qa-item">
@@ -303,7 +420,7 @@
                 </div>
                 
                 <div class="qa-item">
-                    <q>Q:我的货什么时间能收到，怎么查询物流信息？</q>
+                    <q>Q: 我的货什么时间能收到，怎么查询物流信息？</q>
                     <p>A：省内时效隔日到货，省外一般3-5天。如急需要货，请提前与销售沟通。</p>
                     <p style="margin-top:8px;"><strong>物流查询：</strong>登录商桥 → 我的商桥 → 已买到产品 → 找到相关订单，点击查看物流</p>
                     <p style="margin-top:8px;">拨打物流服务电话查询：<strong>400 628 0056</strong>（需告知客服订单号）</p>
@@ -312,17 +429,18 @@
             </div>
         </div>
         
+        <!-- Tab 2: 账期额度开通 -->
         <div id="tab2" class="tab-content">
-            <h2>二、神州数码账期额度开通教程</h2>
+            <h2 class="section-title">二、神州数码账期额度开通教程</h2>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>开通条件</h3>
                 <div class="highlight-box">
                     <p><strong>新客户</strong>现款合作满<strong>三个月</strong>，可申请开通账期额度</p>
                 </div>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>担保方式</h3>
                 <ul>
                     <li><strong>房产担保：</strong>签订框架协议，房产做担保面签，根据交易额、交易频率给出相应额度、账期</li>
@@ -331,7 +449,7 @@
                 </ul>
             </div>
             
-            <div class="content-section">
+            <div class="content-block">
                 <h3>所需资料</h3>
                 <ul>
                     <li>营业执照原件+复印件</li>
@@ -343,35 +461,188 @@
                 </ul>
                 <div class="info-note">
                     <strong>注意：</strong>上述材料涉及到的人员需要在场。<br>
-                    神州数码账期额度开通教程需在一定条件下进行，详细流程请咨询神码销售。
+                    详细流程请咨询神码销售。
                 </div>
             </div>
-        </div>
-        
-        <div id="tab3" class="tab-content">
-            <h2>三、神州数码零售通报数教程</h2>
             
-            <div class="content-section">
-                <div class="highlight-box">
-                    <p>本教程内容正在整理中，如需帮助请联系：</p>
-                    <p style="margin-top:10px;text-align:center;"><strong>周勇</strong> 📞 <strong>18681621755</strong></p>
-                </div>
-            </div>
-        </div>
-        
-        <div id="tab4" class="tab-content">
-            <h2>四、神州数码商桥下单教程</h2>
-            
-            <div class="content-section">
-                <h3>下单流程</h3>
-                <ul class="steps">
-                    <li><strong>登陆账号</strong></li>
-                    <li><strong>搜索物料号</strong>，找到所需商品</li>
-                    <li>勾选相应物料，点击<strong>结算</strong>（如果还要添加其他物料就先加入购物车）</li>
-                    <li>选择地址、支付方式、发票等</li>
+            <div class="content-block">
+                <h3>电子签约指南</h3>
+                <p>如需线上电子签约，请准备以下材料：</p>
+                <ul class="step-list">
+                    <li><strong>法人信息：</strong>身份证照片及实名手机号</li>
+                    <li><strong>房产证明：</strong>房产证照片、房产所有人身份证照片及实名手机号</li>
+                    <li><strong>财务报表：</strong>上一年度审计报告或资产负债表、利润表、现金流量表</li>
+                    <li><strong>经办人信息：</strong>姓名、身份证号、实名手机号</li>
                 </ul>
                 <div class="info-note">
-                    <strong>提示：</strong>下单过程中如遇问题，可联系神码销售或拨打客服电话咨询。
+                    <strong>三要素合一：</strong>姓名、手机号、身份证号必须是同一个人且已经过实名认证。
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 3: 零售通报数 -->
+        <div id="tab3" class="tab-content">
+            <h2 class="section-title">三、神州数码零售通报数教程</h2>
+            
+            <div class="sub-tabs">
+                <button class="sub-tab-btn active" onclick="openSubTab(event, 'sub3_1')">步骤1</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_2')">步骤2</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_3')">步骤3</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_4')">步骤4</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_5')">步骤5</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub3_6')">步骤6</button>
+            </div>
+            
+            <div id="sub3_1" class="sub-content active">
+                <h3 class="section-title">步骤1：设置品牌并选择报量</h3>
+                <div class="image-container">
+                    <img src="images/order_step_3.jpg" alt="零售通小程序报量步骤" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在小程序首页，点击左上角的<strong>品牌切换</strong>按钮，选择"<strong>机械革命</strong>"</li>
+                        <li>点击首页上的"<strong>提报销量</strong>"图标（紫色圆圈内的向上箭头）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub3_2" class="sub-content">
+                <h3 class="section-title">步骤2：选择机型</h3>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在产品列表中搜索或直接找到目标机型</li>
+                        <li>图中示例为"<strong>25431-旷世X</strong>"</li>
+                        <li>提供了搜索栏，可输入手机/品牌/号卡/平板等关键字</li>
+                        <li>选中的机型下方标有相应的奖励金额（如红色标签显示 ￥50）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub3_3" class="sub-content">
+                <h3 class="section-title">步骤3：填写序列号(SN)</h3>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在提报界面填写或扫描机器的 <strong>IMEI1码</strong>（即机器序列号）</li>
+                        <li>可以手动输入 IMEI1 码（必填）</li>
+                        <li>也可以点击旁边的"<strong>扫描</strong>"按钮直接扫描条形码</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub3_4" class="sub-content">
+                <h3 class="section-title">步骤4：上传证明照片</h3>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>上传"<strong>机器序列号照片</strong>"和"<strong>发票/销售单照片</strong>"</li>
+                        <li>需按照模板拍摄，保持照片清晰、元素齐全</li>
+                        <li>否则可能导致审核不通过而无法领取奖励</li>
+                    </ul>
+                    <div class="info-note">
+                        <strong>拍照要求：</strong>上方区域示例为笔记本外箱上的配置贴纸（含SN信息），下方区域示例为正规的发票。
+                    </div>
+                </div>
+            </div>
+            
+            <div id="sub3_5" class="sub-content">
+                <h3 class="section-title">步骤5：查看报量状态</h3>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>提报记录和审核进度可以在首页的"<strong>报量列表</strong>"中查看</li>
+                        <li>点击首页对应的"<strong>报量列表</strong>"图标（橙色文档堆叠形状）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub3_6" class="sub-content">
+                <h3 class="section-title">步骤6：奖励提现</h3>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>报量审核通过后的奖励会存入"<strong>我的钱包</strong>"</li>
+                        <li>进入"<strong>我的钱包</strong>"页面，可以看到历史钱包中的余额</li>
+                        <li>支持直接<strong>提现</strong>操作</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 4: 商桥下单流程 -->
+        <div id="tab4" class="tab-content">
+            <h2 class="section-title">四、神州数码商桥下单教程</h2>
+            
+            <div class="sub-tabs">
+                <button class="sub-tab-btn active" onclick="openSubTab(event, 'sub4_1')">搜索物料</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_2')">进货单</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_3')">填写订单</button>
+                <button class="sub-tab-btn" onclick="openSubTab(event, 'sub4_4')">支付方式</button>
+            </div>
+            
+            <div id="sub4_1" class="sub-content active">
+                <h3 class="section-title">步骤1：搜索物料号</h3>
+                <div class="image-container">
+                    <img src="images/order_step_4.jpg" alt="搜索物料号" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>在商桥小程序首页点击<strong>搜索框</strong></li>
+                        <li>输入<strong>产品名称/物料号</strong></li>
+                        <li>可查看<strong>历史搜索</strong>记录</li>
+                        <li>点击"<strong>搜索</strong>"按钮进行搜索</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub4_2" class="sub-content">
+                <h3 class="section-title">步骤2：加入进货单（购物车）</h3>
+                <div class="image-container">
+                    <img src="images/order_step_5.jpg" alt="进货单" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>找到目标商品后，点击商品进入详情页</li>
+                        <li>选择商品规格和数量</li>
+                        <li>点击"<strong>加入进货单</strong>"或"<strong>加入购物车</strong>"</li>
+                        <li>进入"<strong>进货单</strong>"页面核对商品</li>
+                        <li>勾选要结算的商品，点击"<strong>结算</strong>"按钮</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub4_3" class="sub-content">
+                <h3 class="section-title">步骤3：填写订单信息</h3>
+                <div class="image-container">
+                    <img src="images/order_step_6.jpg" alt="填写订单" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>确认<strong>商品信息</strong>（品牌、型号、价格、数量）</li>
+                        <li>选择/确认<strong>收货地址</strong></li>
+                        <li>填写<strong>备注信息</strong>（如有特殊要求）</li>
+                        <li>选择<strong>支付方式</strong></li>
+                        <li>确认<strong>发票信息</strong>（电子增值税专用发票/普通发票）</li>
+                        <li>填写<strong>短信通知</strong>手机号</li>
+                        <li>选择<strong>收货时间</strong></li>
+                        <li>点击"<strong>提交订单</strong>"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div id="sub4_4" class="sub-content">
+                <h3 class="section-title">步骤4：选择支付方式</h3>
+                <div class="image-container">
+                    <img src="images/order_step_7.jpg" alt="选择支付方式" class="step-image">
+                </div>
+                <div class="content-block">
+                    <ul class="step-list">
+                        <li>订单提交后，进入<strong>支付方式选择</strong>页面</li>
+                        <li>确认<strong>订单金额</strong></li>
+                        <li>选择支付方式：
+                            <ul style="margin-top:10px; margin-left:20px;">
+                                <li><strong>现金支付：</strong>银联在线支付、银行电汇、神州商桥快贷</li>
+                                <li><strong>信用支付：</strong>支票、银行电汇、神州商桥快贷</li>
+                            </ul>
+                        </li>
+                        <li>选择后点击确认完成支付流程</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -389,9 +660,52 @@
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
+            var targetTab = document.getElementById(tabName);
+            targetTab.style.display = "block";
             setTimeout(function() {
-                document.getElementById(tabName).classList.add("active");
+                targetTab.classList.add("active");
+            }, 10);
+            evt.currentTarget.classList.add("active");
+            
+            // Reset sub-tabs when switching main tabs
+            var subContents = targetTab.getElementsByClassName("sub-content");
+            for (i = 0; i < subContents.length; i++) {
+                subContents[i].style.display = "none";
+                subContents[i].classList.remove("active");
+            }
+            var subBtns = targetTab.getElementsByClassName("sub-tab-btn");
+            for (i = 0; i < subBtns.length; i++) {
+                subBtns[i].classList.remove("active");
+            }
+            if (subBtns.length > 0) {
+                subBtns[0].classList.add("active");
+                var firstSub = targetTab.querySelector('.sub-content');
+                if (firstSub) {
+                    firstSub.style.display = "block";
+                    setTimeout(function() {
+                        firstSub.classList.add("active");
+                    }, 10);
+                }
+            }
+        }
+        
+        function openSubTab(evt, subName) {
+            var i, subcontents, sublinks;
+            var parentTab = evt.currentTarget.closest('.tab-content');
+            
+            subcontents = parentTab.getElementsByClassName("sub-content");
+            for (i = 0; i < subcontents.length; i++) {
+                subcontents[i].style.display = "none";
+                subcontents[i].classList.remove("active");
+            }
+            sublinks = parentTab.getElementsByClassName("sub-tab-btn");
+            for (i = 0; i < sublinks.length; i++) {
+                sublinks[i].classList.remove("active");
+            }
+            var target = document.getElementById(subName);
+            target.style.display = "block";
+            setTimeout(function() {
+                target.classList.add("active");
             }, 10);
             evt.currentTarget.classList.add("active");
         }
